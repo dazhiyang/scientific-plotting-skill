@@ -15,7 +15,7 @@ A drop-in AI skill that **forces** large language models (LLMs) to format plots 
 | | |
 | :--- | :--- |
 | 📏 **Exact sizing** | Single-column **85 mm** or double-column **180 mm** widths—computed explicitly, not guessed. |
-| 🔤 **Strict fonts** | Serif (**Times New Roman**), **8 pt** body, **7 pt** ticks (unless you override). |
+| 🔤 **Strict fonts** | One serif (**Times**), **one pt size** for all figure text; **no plot title** (caption in the paper). |
 | 📄 **Vector-only** | No `.png` / `.jpg`; defaults to **`.pdf`** (or `.eps` when appropriate). |
 | 🌐 **R & Python** | **ggplot2** (R) and **plotnine** (Python)—same grammar of graphics, no other primary plotting API unless you override. |
 

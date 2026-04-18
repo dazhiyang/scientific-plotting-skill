@@ -1,6 +1,6 @@
 ---
 name: scientific-publication-plotter
-description: Use for scientific-paper figures in **R (ggplot2)** or **Python (plotnine)**. Default **85 mm** single column, **180 mm** double-column when needed; flat aspect; light PDFs (scattermore / low-res maps); Wong ≤8; viridis + quantile color; parameter block.
+description: Use for scientific-paper figures in **R (ggplot2)** or **Python (plotnine)**. One standardized font size for all text, **no plot title**; **85 mm** / **180 mm** widths; flat aspect; light PDFs; Wong ≤8; viridis + quantile color; parameter block.
 ---
 
 # Scientific Publication Plotting Standard
@@ -45,7 +45,8 @@ Use this when color encodes a **numeric field** (heatmaps, choropleth, filled co
 - **Auto quantile (default on):** the parameter block **always** sets the **viridis-family** map and documents that continuous color uses **equal-count quantile** breaks computed from the data (finite values only), then maps those bands through the **full** viridis ramp—**not** a naive linear stretch of raw values (avoids one hue dominating skewed distributions). Choose break count or quantile grid **inside the plotting code** from the data shape (e.g. deciles)—not as a fixed tunable in the parameter block. If nothing uses continuous color, leave those settings unused. **Rasters:** same idea on valid cells, or percentile-transform before a linear colormap API.
 
 ## Visual conventions
-- **Typography:** serif text aligned with **Times** / **Times New Roman** in the exported PDF; one **base font size (pt)** for titles, axis labels, ticks, and legend text unless the design needs a smaller secondary size (derive it from the base, e.g. a fixed ratio—keep that ratio in the parameter block).
+- **Typography (standardized):** **one** serif family (**Times** / **Times New Roman**) and **one** font **size (pt)** for **every** text element—axis titles, tick labels, legend title, legend body, facet strips, annotations: **all the same size** from a single parameter (e.g. `text_size_pt`). **No plot title:** do not use `ggtitle()`, `labs(title=...)`, or plotnine title layers; put context in the manuscript caption, not on the figure.
+- **Theme wiring:** every `element_text` uses **`text_size_pt`**; **`plot.title`** and **`plot.subtitle`** are **blank** (ggplot2: `element_blank()`; plotnine: equivalent)—no heading text on the panel.
 - **Canvas:** prefer a **white** panel, **light major grid**, **no minor grid** (or visually negligible), and **transparent** figure background where the API allows—so TeX can place the PDF on any page color.
 - **Lines & points:** line widths and marker sizes come from the parameter block; use a thinner width for axes, grids, and error bars than for main data if the library distinguishes them.
 - **Dense scatter (PDF size):** very large point counts **bloat vector PDFs**—use **smaller** markers, **alpha**, subsampling, or **hex / 2d density** when appropriate. **R:** prefer **`scattermore`** with `geom_scattermore()` for big scatterplots instead of millions of `geom_point()` glyphs. **Python:** thin the data, use **`geom_hex`** / 2d bins, or smaller `size` + alpha—avoid shipping huge raw-point layers in the PDF.
@@ -60,11 +61,10 @@ Define at least these **roles** (idiomatic names in R or Python):
 
 | Role | Typical starting values | Purpose |
 |------|-------------------------|---------|
-| Base font | ~8 pt | Axis, ticks, legend, facet strip text |
+| **`text_size_pt`** | one value, e.g. ~8 pt | **All** text (axes, ticks, legend, strips); same size everywhere |
 | Line width (data) | one small default in stroke units | Main lines (comment the unit) |
 | Point / marker size | small; **smaller still** for dense scatter | Scatter / markers; shrink for many points (see **Visual conventions**) |
 | Legend scale | optional second knob | Legend glyphs only, if needed |
-| Smaller text | e.g. base × 5/14 | Captions or secondary labels |
 | **`width_mm`**, **`height_mm`** | **`width_mm`:** **85** (default single column) or **180** (double column when required); **`height_mm`:** flat unless x/y same-quantity | Journal-style widths; see **Visual conventions** |
 | **Wong palette** | fixed `#E69F00`, `#56B4E9`, … | Discrete **≤8** series only; see **Color** |
 | **Continuous color** | viridis-family name + quantile-color note | Always present; see **Color** |
@@ -75,5 +75,5 @@ No duplicate numeric literals for the same aesthetic elsewhere in the file.
 Vector **PDF** (or EPS) at **`width_mm` × `height_mm`** via ggplot2/plotnine; optional raster preview only.
 
 ## Execution
-1. **Parameter block → plot → save** (ggplot2 or plotnine per task); viridis + auto quantile always in the block; Wong / quantile rules in **Color**; for big scatter use **scattermore** (R) or density-friendly geoms (Python); maps use **low-res** shapes.  
+1. **Parameter block → plot → save** (ggplot2 or plotnine per task); **one** `text_size_pt` for all text, **no title**; viridis + auto quantile always in the block; Wong / quantile rules in **Color**; big scatter → **scattermore** (R) or density geoms (Python); maps → **low-res** shapes.  
 2. Run and confirm the vector file exists.

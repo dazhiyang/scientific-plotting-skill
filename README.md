@@ -1,25 +1,41 @@
-# Scientific Publication Plotter (AI Skill)
+# 📊 Scientific Publication Plotter (AI Skill)
 
-A drop-in AI skill that forces large language models (LLMs) to format plots perfectly for scientific journals. 
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](https://github.com/dazhiyang/scientific-plotting-skill/blob/main/LICENSE)
+[![Single file](https://img.shields.io/badge/skill-single--file-8b5cf6?style=for-the-badge)](SKILL.md)
+[![No dependencies](https://img.shields.io/badge/deps-none-64748b?style=for-the-badge)]()
 
-It is just one file. No scripts, no dependencies, no bloat. The AI reads the rules and dynamically writes the plotting code in your preferred language (Python, R, Julia, MATLAB) while following strict typesetting math.
+A drop-in AI skill that **forces** large language models (LLMs) to format plots for **scientific journals**: exact sizing, strict typography, and **vector-only** export—no bundled scripts and no extra dependencies.
 
-## Features
-- **Exact Sizing:** Forces the AI to calculate exact dimensions (85mm single-column or 180mm double-column).
-- **Strict Fonts:** Enforces Serif fonts (Times New Roman) and specific sizes (8pt base, 7pt ticks).
-- **Vector-Only Output:** Prevents the AI from making `.png` files, forcing high-quality `.pdf` or `.eps` generation instead.
-- **Language Agnostic:** Adapts to your workspace (e.g., uses `ggplot2` for R, or `matplotlib` for Python).
+> 🧩 **One file.** The model reads [`SKILL.md`](SKILL.md), then writes plotting code in **your** stack (Python, R, Julia, MATLAB) with strict journal-style math and layout rules.
 
-## How to Use
+---
 
-**For Cursor:**
-1. Copy `SKILL.md` into your `.cursor/rules/` directory.
-2. Rename it to `SKILL.mdc`.
-3. Ask the AI: *"Plot my data for the manuscript."*
+## ✨ Features
 
-**For standard AI Agents (Claude Code, Copilot):**
-1. Drop `SKILL.md` into the root of your project folder.
-2. Ask the AI: *"Read SKILL.md and plot the attached data."*
+| | |
+| :--- | :--- |
+| 📏 **Exact sizing** | Single-column **85 mm** or double-column **180 mm** widths—computed explicitly, not guessed. |
+| 🔤 **Strict fonts** | Serif (**Times New Roman**), **8 pt** body, **7 pt** ticks (unless you override). |
+| 📄 **Vector-only** | No `.png` / `.jpg`; defaults to **`.pdf`** (or `.eps` when appropriate). |
+| 🌐 **Language-agnostic** | Matches your repo: e.g. **Matplotlib**, **ggplot2**, **Plots.jl**, etc. |
 
-## License
-MIT
+---
+
+## 🚀 How to use
+
+### 🖱️ Cursor
+
+1. 📋 Copy **`SKILL.md`** into your **`.cursor/rules/`** folder.  
+2. ✏️ Rename it to **`SKILL.mdc`**.  
+3. 💬 Ask the AI: *“Plot my data for the manuscript.”*
+
+### 🤖 Claude Code, Copilot, and other agents
+
+1. 📁 Drop **`SKILL.md`** at the **root** of your project.  
+2. 💬 Ask: *“Read `SKILL.md` and plot the attached data.”*
+
+---
+
+## 📜 License
+
+MIT — see [`LICENSE`](LICENSE).

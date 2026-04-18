@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](https://github.com/dazhiyang/scientific-plotting-skill/blob/main/LICENSE)
 [![Single file](https://img.shields.io/badge/skill-single--file-8b5cf6?style=for-the-badge)](SKILL.md)
 [![No dependencies](https://img.shields.io/badge/deps-none-64748b?style=for-the-badge)]()
-[![GitHub](https://img.shields.io/badge/repo-scientific--plotting--skill-181717?logo=github)](https://github.com/dazhiyang/scientific-plotting-skill)
+[![GitHub](https://img.shields.io/badge/repo-scientific--plotting--skill-181717?style=for-the-badge&logo=github)](https://github.com/dazhiyang/scientific-plotting-skill)
 
 ## Overview
 

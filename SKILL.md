@@ -1,6 +1,8 @@
 ---
 name: scientific-publication-plotter
-description: Use for scientific-paper figures in **R (ggplot2)** or **Python (plotnine)**. One standardized font size for all text, **no plot title**; **85 mm** / **180 mm** widths; flat aspect; light PDFs; Wong ≤8; viridis + quantile color; parameter block.
+description: >-
+  Use when the user asks to plot for the paper, make a manuscript or journal figure, export a publication or thesis PDF, or prepare supplementary vector graphics—in R with ggplot2 only or Python with plotnine only.
+  Enforces vector PDF, 85 mm and 180 mm widths, one Times text size with no plot title, Wong discrete colors, viridis with quantile splits for continuous color, dense-scatter and map guidance, and a top-of-file parameter block.
 ---
 
 # Scientific Publication Plotting Standard
@@ -10,6 +12,11 @@ Manuscript-quality figures: **vector** output, readable typography, a **single t
 
 ## Stack
 **R → ggplot2 only; Python → plotnine only.**
+
+## Skill routing
+- **Agent routers** (e.g. Antigravity): they match on the YAML **`description`** above first—keep it **readable**, but include a few **real user phrases** (plot for the paper, manuscript figure, journal PDF, …) so intent matches without stuffing keywords.
+- **Cursor:** rules live under **`.cursor/rules/`** (e.g. copy this file and use **`.mdc`** if that is your convention)—that is what Cursor loads for the project.
+- **Antigravity:** skills live under **`.agent/skills/<skill-name>/SKILL.md`** (or **`~/.gemini/antigravity/skills/...`** for global installs). **Where the file sits** matters more than how long the README is.
 
 ## Script layout
 1. Imports / setup.  

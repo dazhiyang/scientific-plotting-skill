@@ -13,13 +13,13 @@ It is just one file. No scripts, no dependencies, no bloat. The AI reads the rul
 ## How to Use
 
 **For Cursor:**
-1. Copy `scientific_plot.md` into your `.cursor/rules/` directory.
-2. Rename it to `scientific_plot.mdc`.
+1. Copy `SKILL.md` into your `.cursor/rules/` directory.
+2. Rename it to `SKILL.mdc`.
 3. Ask the AI: *"Plot my data for the manuscript."*
 
 **For standard AI Agents (Claude Code, Copilot):**
-1. Drop `scientific_plot.md` into the root of your project folder.
-2. Ask the AI: *"Read scientific_plot.md and plot the attached data."*
+1. Drop `SKILL.md` into the root of your project folder.
+2. Ask the AI: *"Read SKILL.md and plot the attached data."*
 
 ## License
 MIT

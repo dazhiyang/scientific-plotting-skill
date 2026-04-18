@@ -3,56 +3,80 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](https://github.com/dazhiyang/scientific-plotting-skill/blob/main/LICENSE)
 [![Single file](https://img.shields.io/badge/skill-single--file-8b5cf6?style=for-the-badge)](SKILL.md)
 [![No dependencies](https://img.shields.io/badge/deps-none-64748b?style=for-the-badge)]()
+[![GitHub](https://img.shields.io/badge/repo-scientific--plotting--skill-181717?logo=github)](https://github.com/dazhiyang/scientific-plotting-skill)
 
-A drop-in AI skill that **forces** large language models (LLMs) to format plots for **scientific journals**: exact sizing, strict typography, and **vector-only** export—no bundled scripts and no extra dependencies.
+## Overview
 
-> 🧩 **One file.** The model reads [`SKILL.md`](SKILL.md), then writes plotting code in **R (ggplot2)** or **Python (plotnine)** with strict journal-style math and layout rules.
+This repo ships **one** skill file, [`SKILL.md`](SKILL.md). Point your coding agent at it when you want **publication-style** figures: **ggplot2** in R or **plotnine** in Python, **vector PDF**, journal-friendly widths (**85 mm** / **180 mm**), **Wong** discrete colors, **viridis** with quantile splits for continuous color, and typography rules (single font size, **no plot title**—caption in the manuscript instead).
+
+No bundled scripts: the agent generates code in your project from the rules in `SKILL.md`.
 
 ---
 
-## ✨ Features
+## Features
 
 | | |
 | :--- | :--- |
-| 📏 **Exact sizing** | Single-column **85 mm** or double-column **180 mm** widths—computed explicitly, not guessed. |
-| 🔤 **Strict fonts** | One serif (**Times**), **one pt size** for all figure text; **no plot title** (caption in the paper). |
-| 📄 **Vector-only** | No `.png` / `.jpg`; defaults to **`.pdf`** (or `.eps` when appropriate). |
-| 🌐 **R & Python** | **ggplot2** (R) and **plotnine** (Python)—same grammar of graphics, no other primary plotting API unless you override. |
+| 📏 **Sizing** | Default **85 mm** single column, **180 mm** when you need double column; prefer **flat** figures unless x and y are the same quantity. |
+| 🔤 **Typography** | **Times** serif, **one** point size for **all** figure text; **no** plot title or subtitle on the canvas. |
+| 📄 **Export** | **Vector PDF** (or EPS); raster only as an optional preview. |
+| 🎨 **Color** | **Wong** order for discrete (≤8); **viridis** family + **equal-count quantiles** for continuous fields. |
+| 🌐 **Stack** | **ggplot2** (R) and **plotnine** (Python) only for the figure code. |
+| 🗺️ **Heavy plots** | Guidance for **dense scatter** (e.g. **scattermore** in R) and **low-resolution** map outlines so PDFs stay light. |
 
 ---
 
-## 🚀 How to use
+## Example prompts
+
+Use wording close to your real task so the agent picks up the skill:
+
+- *“Read `SKILL.md` and plot this CSV for my manuscript—single column PDF, ggplot2.”*
+- *“Publication-style plotnine figure, Wong colors, vector output.”*
+- *“Journal figure: 85 mm wide, no title, Times, save PDF.”*
+
+---
+
+## How to use
 
 ### 🖱️ Cursor
 
 1. 📋 Copy **`SKILL.md`** into your **`.cursor/rules/`** folder.  
 2. ✏️ Rename it to **`SKILL.mdc`**.  
-3. 💬 Ask the AI: *“Plot my data for the manuscript.”*
+3. 💬 Ask the AI to follow the skill (e.g. *“Plot my data for the manuscript.”*).
 
 ### 🤖 Claude Code, Copilot, and other agents
 
-1. 📁 Drop **`SKILL.md`** at the **root** of your project.  
-2. 💬 Ask: *“Read `SKILL.md` and plot the attached data.”*
+1. 📁 Add **`SKILL.md`** at the **root** of your project (or path your agent reads).  
+2. 💬 Ask the model to use it (e.g. *“Read `SKILL.md` and plot the attached data.”*).
 
 ### 🛸 Google Antigravity
 
-Antigravity loads **Agent Skills** from a folder that contains `SKILL.md` (see Google’s [Authoring Antigravity Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab). This repo’s `SKILL.md` already includes YAML **frontmatter** (`name`, `description`) so the agent can match plotting requests.
+Antigravity loads **Agent Skills** from a folder that contains `SKILL.md` (see Google’s [Authoring Antigravity Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab). This repo’s `SKILL.md` includes YAML **frontmatter** (`name`, `description`) so the agent can match plotting tasks.
 
-**Project-only (recommended)** — skill applies to one workspace:
+**Project-only (recommended)**
 
-1. 📂 Create a skill directory under your repo, e.g. **`.agent/skills/scientific-publication-plotter/`**.  
-2. 📋 Copy **`SKILL.md`** from this repo into that folder (path must end with **`SKILL.md`**).  
-3. 💬 In Agent chat, ask for a manuscript-style figure (e.g. *“Plot … for the paper, vector PDF, single column”*). The agent should **activate** the skill when the task matches the description.
+1. 📂 Create e.g. **`.agent/skills/scientific-publication-plotter/`** in your repo.  
+2. 📋 Copy **`SKILL.md`** there (path must end with **`SKILL.md`**).  
+3. 💬 Ask for a manuscript-style figure in chat; the skill should load when the request matches the description.
 
-**All projects on this machine** — same layout under your user config:
+**All projects on this machine**
 
-1. 📂 Create **`~/.gemini/antigravity/skills/scientific-publication-plotter/`** (pick any folder name; keep **`SKILL.md`** inside).  
-2. 📋 Copy **`SKILL.md`** there.
+1. 📂 Create **`~/.gemini/antigravity/skills/<your-skill-name>/`** and place **`SKILL.md`** inside.
 
-**Optional — rules UI:** You can also add always-on text rules via **Agent Manager → ⋮ → Additional options → Customizations** and edit **`GEMINI.md`** / **`AGENTS.md`** (see [Antigravity rules paths](https://antigravity.codes/blog/user-rules)); pasting the body of `SKILL.md` there works, but the **`.agent/skills/…`** layout keeps this skill **modular** and on-demand like other Antigravity skills.
+**Optional — rules UI:** **Agent Manager → ⋮ → Additional options → Customizations** for **`GEMINI.md`** / **`AGENTS.md`** ([Antigravity rules](https://antigravity.codes/blog/user-rules)). Pasting the body of `SKILL.md` there is possible; **`.agent/skills/…`** keeps the skill **on-demand**.
 
 ---
 
-## 📜 License
+## Make the repo easy to find (GitHub)
+
+If you control [the GitHub repo](https://github.com/dazhiyang/scientific-plotting-skill):
+
+1. **About** — add a one-line description (e.g. publication ggplot2/plotnine, vector PDF, Cursor/Antigravity skill).  
+2. **Topics** — add tags such as: `ggplot2`, `plotnine`, `scientific-publishing`, `data-visualization`, `cursor-rules`, `pdf`, `latex`, `colorblind`, `reproducible-research`.  
+3. **Share** — link from your profile, lab page, or a short post so others can star or fork it.
+
+---
+
+## License
 
 MIT — see [`LICENSE`](LICENSE).

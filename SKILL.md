@@ -1,3 +1,8 @@
+---
+name: scientific-publication-plotter
+description: Use when the user asks to plot, graph, or visualize data for scientific papers, manuscripts, or journals. Enforces exact figure widths (85 mm / 180 mm), Times New Roman typography, vector-only PDF (or EPS), and native plotting code in the project’s language (Python, R, Julia, MATLAB).
+---
+
 # Scientific Publication Plotting Standard
 
 ## Context

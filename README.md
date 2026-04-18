@@ -34,6 +34,23 @@ A drop-in AI skill that **forces** large language models (LLMs) to format plots 
 1. 📁 Drop **`SKILL.md`** at the **root** of your project.  
 2. 💬 Ask: *“Read `SKILL.md` and plot the attached data.”*
 
+### 🛸 Google Antigravity
+
+Antigravity loads **Agent Skills** from a folder that contains `SKILL.md` (see Google’s [Authoring Antigravity Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab). This repo’s `SKILL.md` already includes YAML **frontmatter** (`name`, `description`) so the agent can match plotting requests.
+
+**Project-only (recommended)** — skill applies to one workspace:
+
+1. 📂 Create a skill directory under your repo, e.g. **`.agent/skills/scientific-publication-plotter/`**.  
+2. 📋 Copy **`SKILL.md`** from this repo into that folder (path must end with **`SKILL.md`**).  
+3. 💬 In Agent chat, ask for a manuscript-style figure (e.g. *“Plot … for the paper, vector PDF, single column”*). The agent should **activate** the skill when the task matches the description.
+
+**All projects on this machine** — same layout under your user config:
+
+1. 📂 Create **`~/.gemini/antigravity/skills/scientific-publication-plotter/`** (pick any folder name; keep **`SKILL.md`** inside).  
+2. 📋 Copy **`SKILL.md`** there.
+
+**Optional — rules UI:** You can also add always-on text rules via **Agent Manager → ⋮ → Additional options → Customizations** and edit **`GEMINI.md`** / **`AGENTS.md`** (see [Antigravity rules paths](https://antigravity.codes/blog/user-rules)); pasting the body of `SKILL.md` there works, but the **`.agent/skills/…`** layout keeps this skill **modular** and on-demand like other Antigravity skills.
+
 ---
 
 ## 📜 License

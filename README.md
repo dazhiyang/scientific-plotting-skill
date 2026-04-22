@@ -67,16 +67,6 @@ Antigravity loads **Agent Skills** from a folder that contains `SKILL.md` (see G
 
 ---
 
-## Make the repo easy to find (GitHub)
-
-If you control [the GitHub repo](https://github.com/dazhiyang/scientific-plotting-skill):
-
-1. **About** — add a one-line description (e.g. publication ggplot2/plotnine, vector PDF, Cursor/Antigravity skill).  
-2. **Topics** — add tags such as: `ggplot2`, `plotnine`, `scientific-publishing`, `data-visualization`, `cursor-rules`, `pdf`, `latex`, `colorblind`, `reproducible-research`.  
-3. **Share** — link from your profile, lab page, or a short post so others can star or fork it.
-
----
-
 ## License
 
 MIT — see [`LICENSE`](LICENSE).
